@@ -1,0 +1,257 @@
+[gd_scene load_steps=8 format=3 uid="uid://kq88ibk3s4dp"]
+
+[ext_resource type="Texture2D" uid="uid://grrsepyreyfg" path="res://raw/scvm.png" id="1_bn5f6"]
+[ext_resource type="Script" path="res://CharCreateScreen/char_create_screen.gd" id="1_lc5yd"]
+[ext_resource type="FontFile" uid="uid://c6b8v1ithd13e" path="res://fonts/OldNewspaperTypes.ttf" id="1_ryp1u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2drqb"]
+font = ExtResource("1_ryp1u")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_fk5vp"]
+font = ExtResource("1_ryp1u")
+font_size = 24
+
+[sub_resource type="Theme" id="Theme_73yai"]
+default_font = ExtResource("1_ryp1u")
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_83vvq"]
+default_font = ExtResource("1_ryp1u")
+default_font_size = 85
+
+[node name="CharCreateScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lc5yd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bn5f6")
+expand_mode = 2
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -439.0
+offset_top = -335.0
+offset_right = -339.0
+offset_bottom = -286.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.101622
+text = "Name"
+label_settings = SubResource("LabelSettings_2drqb")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = -296.0
+offset_right = -23.0
+offset_bottom = -263.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0576483
+text = "Testname"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="ClassLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -436.0
+offset_top = -261.0
+offset_right = -336.0
+offset_bottom = -212.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0275385
+text = "Class"
+label_settings = SubResource("LabelSettings_2drqb")
+
+[node name="Class" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = -202.0
+offset_right = -56.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0622452
+text = "Test Class
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="StatsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -593.0
+offset_top = -140.0
+offset_right = -493.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.410548
+text = "Stats"
+label_settings = SubResource("LabelSettings_2drqb")
+
+[node name="HP" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -498.0
+offset_top = -86.0
+offset_right = -418.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0224583
+text = "HP: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="Strength" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -511.0
+offset_top = -42.0
+offset_right = -431.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0529585
+text = "Strength: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="Agility" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -498.0
+offset_top = 1.99997
+offset_right = -370.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0810017
+text = "Agility: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="HP4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -517.0
+offset_top = 39.0
+offset_right = -389.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0555333
+text = "Test: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="HP5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = 75.0
+offset_right = -360.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.118808
+text = "Test: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="Reroll" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -191.0
+offset_right = -35.0
+offset_bottom = -121.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.156389
+theme = SubResource("Theme_73yai")
+action_mode = 0
+text = "Reroll"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Run" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -189.0
+offset_top = -140.0
+offset_right = -8.99976
+offset_bottom = -26.9999
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.128397
+theme = SubResource("Theme_83vvq")
+action_mode = 0
+text = "Run"
+flat = true
+
+[connection signal="pressed" from="Reroll" to="." method="_on_reroll_pressed"]

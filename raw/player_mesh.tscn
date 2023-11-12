@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6nt6vjbdisk2"]
+
+[ext_resource type="PackedScene" uid="uid://dc3ey1w77ow11" path="res://raw/player_beta.glb" id="1_0y2wo"]
+
+[node name="player_beta" instance=ExtResource("1_0y2wo")]
+
+[node name="Player_anim" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Player_anim" index="0"]
+bones/6/position = Vector3(-2.08379e-17, 0.596508, 0.101605)
+bones/8/rotation = Quaternion(0.285989, 0.014678, -0.0226842, 0.957852)
+bones/9/rotation = Quaternion(-3.37418e-06, -4.26814e-07, 0.11412, 0.993467)
+bones/10/rotation = Quaternion(-0.015406, 0.0205475, -0.00279262, 0.999666)
+bones/12/rotation = Quaternion(0.286, -0.0182991, 0.0166268, 0.957911)
+bones/13/rotation = Quaternion(6.93279e-07, 6.43221e-07, -0.116183, 0.993228)
+bones/14/rotation = Quaternion(-0.0154199, -0.00904047, 0.00256454, 0.999837)
+bones/15/rotation = Quaternion(-0.000464006, 0.00554834, -0.99653, 0.0830485)
+bones/16/rotation = Quaternion(-0.0453314, -1.19361e-08, 1.45068e-07, 0.998972)
+bones/17/rotation = Quaternion(0.464542, -0.0399848, 0.0396233, 0.88376)
+bones/18/position = Vector3(1.86741e-05, 0.395719, -2.39467e-05)
+bones/20/rotation = Quaternion(-0.000659688, -0.00789407, 0.996514, 0.0830464)
+bones/21/rotation = Quaternion(-0.0501647, -8.36007e-07, -1.17218e-07, 0.998741)
+bones/22/rotation = Quaternion(0.468681, 0.0408314, -0.0394509, 0.881541)
+bones/23/position = Vector3(-9.14828e-06, 0.393185, -3.31549e-05)
+bones/30/rotation = Quaternion(-0.0453314, -1.14474e-08, 1.49866e-07, 0.998972)
+bones/49/rotation = Quaternion(0.285989, 0.014678, -0.0226842, 0.957852)
+bones/64/rotation = Quaternion(0.0965733, 0.700482, 0.700481, -0.09657)

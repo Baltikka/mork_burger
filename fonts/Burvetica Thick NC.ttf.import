@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cnpik2b0htbs8"
+path="res://.godot/imported/Burvetica Thick NC.ttf-0d0620c823b7c0282be7fcab13acb588.fontdata"
+
+[deps]
+
+source_file="res://fonts/Burvetica Thick NC.ttf"
+dest_files=["res://.godot/imported/Burvetica Thick NC.ttf-0d0620c823b7c0282be7fcab13acb588.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
