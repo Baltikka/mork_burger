@@ -1,0 +1,183 @@
+[gd_scene load_steps=11 format=3 uid="uid://cd3n7o4bvyj24"]
+
+[ext_resource type="Texture2D" uid="uid://cj6i6njfmx2m0" path="res://raw/stone_tiles_512_darker.jpg" id="1_i06h4"]
+[ext_resource type="PackedScene" uid="uid://bw1l72igkmie6" path="res://ZoneLoadOverlay/zone_load_overlay.tscn" id="1_kqiyi"]
+[ext_resource type="Script" path="res://BattleScene/battle_scene.gd" id="1_rulcd"]
+[ext_resource type="FontFile" uid="uid://c6b8v1ithd13e" path="res://fonts/OldNewspaperTypes.ttf" id="4_05cmy"]
+
+[sub_resource type="Shader" id="Shader_pwfgk"]
+code = "shader_type canvas_item;
+
+render_mode unshaded;
+
+#define MAXCOLORS 16
+
+uniform bool enabled = true;
+uniform bool dithering = true;
+uniform int colors : hint_range(1, MAXCOLORS) = 12;
+uniform int dither_size: hint_range(1, 8) = 2;
+
+float dithering_pattern(ivec2 fragcoord) {
+	const float pattern[] = {
+		0.00, 0.50, 0.10, 0.65, 
+		0.75, 0.25, 0.90, 0.35, 
+		0.20, 0.70, 0.05, 0.50, 
+		0.95, 0.40, 0.80, 0.30
+	};
+	
+	int x = fragcoord.x % 4;
+	int y = fragcoord.y % 4;
+	
+	return pattern[y * 4 + x];
+}
+
+float reduce_color(float raw, float dither, int depth) {
+	float div = 1.0 / float(depth);
+	float val = 0.0;
+	int i = 0;
+
+	while (i <= MAXCOLORS)
+	{
+		if (raw > div * (float(i + 1))) {
+			i = i + 1;
+			continue;
+		}
+
+		if (raw * float(depth) - float(i) <= dither * 0.999)
+		{
+			val = div * float(i);
+		} 
+		else
+		{
+			val = div * float(i + 1);
+		}
+		return val;
+
+		i = i+1;
+	}
+
+	return val;
+}
+
+void fragment() {
+	vec4 raw = texture(TEXTURE, SCREEN_UV);
+	ivec2 uv = ivec2(FRAGCOORD.xy / float(dither_size));
+
+	if (enabled == true){
+		float dithering_value = 1.0;
+		if (dithering)
+		{
+			dithering_value = dithering_pattern(uv);
+		}
+		
+		COLOR.r = reduce_color(raw.r, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
+		COLOR.g = reduce_color(raw.g, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
+		COLOR.b = reduce_color(raw.b, (dithering_value - 0.5) * dithering_value + 0.5, colors - 1);
+
+	} else {
+		COLOR.rgb = raw.rgb;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhaap"]
+shader = SubResource("Shader_pwfgk")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 2
+shader_parameter/dither_size = 2
+
+[sub_resource type="Environment" id="Environment_h1alu"]
+background_mode = 1
+ambient_light_energy = 0.0
+glow_intensity = 8.0
+glow_bloom = 0.62
+fog_density = 0.0745
+volumetric_fog_density = 0.1495
+volumetric_fog_albedo = Color(0.423529, 0.423529, 0.423529, 1)
+adjustment_enabled = true
+adjustment_saturation = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4in2"]
+albedo_texture = ExtResource("1_i06h4")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lyaxs"]
+material = SubResource("StandardMaterial3D_m4in2")
+size = Vector2(20, 20)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5xbu"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[node name="BattleScene" type="Node3D"]
+script = ExtResource("1_rulcd")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_xhaap")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Node3D"]
+environment = SubResource("Environment_h1alu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("PlaneMesh_lyaxs")
+skeleton = NodePath("../../../ZoneLoadOverlay")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.82684)
+current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.63846)
+light_energy = 10.0
+shadow_enabled = true
+omni_range = 11.881
+
+[node name="Pos1" type="Node3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.924)
+
+[node name="Pos2" type="Node3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.935, -2, -1.799)
+
+[node name="Pos3" type="Node3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.935, -2, -1.799)
+
+[node name="ZoneLoadOverlay" parent="SubViewportContainer" instance=ExtResource("1_kqiyi")]
+visible = false
+layout_mode = 2
+zoneName = "Ambush!"
+
+[node name="Controls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BattleLog" type="RichTextLabel" parent="Controls"]
+layout_mode = 1
+offset_right = 501.0
+offset_bottom = 121.0
+theme_override_fonts/normal_font = ExtResource("4_05cmy")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_b5xbu")
+text = "asdasdasasdasd"
+scroll_following = true

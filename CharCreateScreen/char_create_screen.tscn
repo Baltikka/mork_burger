@@ -1,16 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://kq88ibk3s4dp"]
+[gd_scene load_steps=10 format=3 uid="uid://kq88ibk3s4dp"]
 
 [ext_resource type="Texture2D" uid="uid://grrsepyreyfg" path="res://raw/scvm.png" id="1_bn5f6"]
 [ext_resource type="Script" path="res://CharCreateScreen/char_create_screen.gd" id="1_lc5yd"]
 [ext_resource type="FontFile" uid="uid://c6b8v1ithd13e" path="res://fonts/OldNewspaperTypes.ttf" id="1_ryp1u"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_2drqb"]
-font = ExtResource("1_ryp1u")
-font_size = 36
-
-[sub_resource type="LabelSettings" id="LabelSettings_fk5vp"]
-font = ExtResource("1_ryp1u")
-font_size = 24
+[ext_resource type="PackedScene" uid="uid://c334w8qxwf06s" path="res://demo.tscn" id="2_txbnt"]
+[ext_resource type="PackedScene" uid="uid://bw1l72igkmie6" path="res://ZoneLoadOverlay/zone_load_overlay.tscn" id="4_wbaa6"]
 
 [sub_resource type="Theme" id="Theme_73yai"]
 default_font = ExtResource("1_ryp1u")
@@ -20,6 +14,14 @@ default_font_size = 50
 default_font = ExtResource("1_ryp1u")
 default_font_size = 85
 
+[sub_resource type="LabelSettings" id="LabelSettings_2drqb"]
+font = ExtResource("1_ryp1u")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_fk5vp"]
+font = ExtResource("1_ryp1u")
+font_size = 24
+
 [node name="CharCreateScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -28,6 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lc5yd")
+nextScene = ExtResource("2_txbnt")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -37,183 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bn5f6")
-expand_mode = 2
-
-[node name="NameLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -439.0
-offset_top = -335.0
-offset_right = -339.0
-offset_bottom = -286.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.101622
-text = "Name"
-label_settings = SubResource("LabelSettings_2drqb")
-
-[node name="Name" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -385.0
-offset_top = -296.0
-offset_right = -23.0
-offset_bottom = -263.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.0576483
-text = "Testname"
-label_settings = SubResource("LabelSettings_fk5vp")
-
-[node name="ClassLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -436.0
-offset_top = -261.0
-offset_right = -336.0
-offset_bottom = -212.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.0275385
-text = "Class"
-label_settings = SubResource("LabelSettings_2drqb")
-
-[node name="Class" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -409.0
-offset_top = -202.0
-offset_right = -56.0
-offset_bottom = -169.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.0622452
-text = "Test Class
-"
-label_settings = SubResource("LabelSettings_fk5vp")
-
-[node name="StatsLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -593.0
-offset_top = -140.0
-offset_right = -493.0
-offset_bottom = -91.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.410548
-text = "Stats"
-label_settings = SubResource("LabelSettings_2drqb")
-
-[node name="HP" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -498.0
-offset_top = -86.0
-offset_right = -418.0
-offset_bottom = -53.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.0224583
-text = "HP: 5
-"
-label_settings = SubResource("LabelSettings_fk5vp")
-
-[node name="Strength" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -511.0
-offset_top = -42.0
-offset_right = -431.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.0529585
-text = "Strength: 5
-"
-label_settings = SubResource("LabelSettings_fk5vp")
-
-[node name="Agility" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -498.0
-offset_top = 1.99997
-offset_right = -370.0
-offset_bottom = 35.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.0810017
-text = "Agility: 5
-"
-label_settings = SubResource("LabelSettings_fk5vp")
-
-[node name="HP4" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -517.0
-offset_top = 39.0
-offset_right = -389.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.0555333
-text = "Test: 5
-"
-label_settings = SubResource("LabelSettings_fk5vp")
-
-[node name="HP5" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -488.0
-offset_top = 75.0
-offset_right = -360.0
-offset_bottom = 108.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.118808
-text = "Test: 5
-"
-label_settings = SubResource("LabelSettings_fk5vp")
+expand_mode = 3
 
 [node name="Reroll" type="Button" parent="."]
 layout_mode = 1
@@ -254,4 +81,172 @@ action_mode = 0
 text = "Run"
 flat = true
 
+[node name="LabelsLeft" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameLabel" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 181.0
+offset_top = 5.0
+offset_right = 281.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.101622
+text = "Name"
+label_settings = SubResource("LabelSettings_2drqb")
+
+[node name="Name" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 235.0
+offset_top = 44.0
+offset_right = 597.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0576483
+text = "Testname"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="ClassLabel" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 184.0
+offset_top = 79.0
+offset_right = 284.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0275385
+text = "Class"
+label_settings = SubResource("LabelSettings_2drqb")
+
+[node name="Class" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 211.0
+offset_top = 138.0
+offset_right = 564.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0622452
+text = "Test Class
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="StatsLabel" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = 200.0
+offset_right = 127.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.410548
+text = "Stats"
+label_settings = SubResource("LabelSettings_2drqb")
+
+[node name="HP" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 122.0
+offset_top = 254.0
+offset_right = 202.0
+offset_bottom = 287.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0224583
+text = "HP: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="Strength" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = 298.0
+offset_right = 213.0
+offset_bottom = 331.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0529585
+text = "Strength: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="Agility" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 122.0
+offset_top = 342.0
+offset_right = 250.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0810017
+text = "Agility: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="Toughness" type="Label" parent="LabelsLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 97.0
+offset_top = 370.0
+offset_right = 243.0
+offset_bottom = 403.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0555333
+text = "Toughness: 5
+"
+label_settings = SubResource("LabelSettings_fk5vp")
+
+[node name="ZoneLoadOverlay" parent="." instance=ExtResource("4_wbaa6")]
+layout_mode = 1
+zoneName = "Crawler"
+
 [connection signal="pressed" from="Reroll" to="." method="_on_reroll_pressed"]
+[connection signal="pressed" from="Run" to="." method="_on_run_pressed"]

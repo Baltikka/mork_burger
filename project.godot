@@ -18,6 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://Globals/Globals.gd"
+PlayerStats="*res://Globals/PlayerStats.gd"
+Enemies="*res://Globals/Enemies.gd"
+WeaponsAndArmor="*res://Globals/WeaponsAndArmor.gd"
 
 [display]
 
